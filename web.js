@@ -1,3 +1,8 @@
+// Block app if not logged in
+if (!sessionStorage.getItem('user')) {
+    document.body.style.overflow = 'hidden'; // prevent scrolling behind overlay
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const chatContainer = document.getElementById('chat-container');
     const chatInput = document.getElementById('chat-input');

@@ -8,9 +8,24 @@
     <title>KISAN-SATHI-AI for Farmers</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <!-- Google Identity Services -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<meta name="google-signin-client_id" content="1042547333874-3rtlhqvkb13bpp4dp5cejv2minl91pv9.apps.googleusercontent.com">
 </head>
 <body>
+    <!-- LOGIN OVERLAY -->
+<div id="login-overlay" style="
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(135deg, #14532d, #166534);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    z-index:9999;">
+    <img src="kisansathi logo.png" style="height:80px; margin-bottom:16px;">
+    <h1 style="color:white; font-size:2rem; font-weight:bold; margin-bottom:8px;">KISAN-SATHI</h1>
+    <p style="color:#bbf7d0; margin-bottom:32px;">AI Assistant for Farmers</p>
+    <div id="google-signin-btn"></div>
+    <p id="login-error" style="color:#fca5a5; margin-top:16px; display:none;">Login failed. Please try again.</p>
+</div>
     <!-- Header/Navigation -->
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -416,5 +431,6 @@
     </footer>
 
    <script src="web.js"></script>
+   <script src="login.js"></script>
 </body>
 </html>
