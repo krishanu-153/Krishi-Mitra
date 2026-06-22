@@ -269,7 +269,40 @@ function initLocationSelectors() {
         }
     });
 }
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
 
+        if (!question || !answer || !icon) return;
+
+        question.addEventListener('click', function () {
+            const isOpen = !answer.classList.contains('hidden');
+
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherIcon = otherItem.querySelector('.faq-icon');
+                    if (otherAnswer) otherAnswer.classList.add('hidden');
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Toggle current item
+            if (isOpen) {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+}
 // Profile dropdown controls
 const menuBtn = document.getElementById('profile-menu-btn');
 const dropdown = document.getElementById('profile-dropdown');
@@ -509,6 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     switchAppLanguage('en');
+    initFAQ();
     initLocationSelectors();
     document.getElementById("crop-btn")?.addEventListener("click", getCropRecommendation);
 
